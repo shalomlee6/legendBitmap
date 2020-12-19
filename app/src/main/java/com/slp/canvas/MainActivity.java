@@ -2,20 +2,29 @@ package com.slp.canvas;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.fragment.app.FragmentManager;
 
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.AttributeSet;
 import android.view.View;
+import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
 
     Boolean open;
+    Button main;
     LegendLayout legendLayout;
     ConstraintLayout legend_layout_container;
     ConstraintLayout main_layout;
@@ -26,11 +35,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         open = true;
+        main = findViewById(R.id.main);
+
         legend_layout_container = findViewById(R.id.legend_layout);
         legendLayout = new LegendLayout(this);
-        legend_layout_container = findViewById(R.id.legend_layout);
         legend_layout_container.addView(legendLayout);
 
+
+        main.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.JELLY_BEAN_MR2)
+            @Override
+            public void onClick(View view) {
+
+
+
+
+            }
+        });
         legend_layout_container.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

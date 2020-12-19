@@ -1,9 +1,12 @@
 package com.slp.canvas;
 
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffXfermode;
 import android.graphics.Rect;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,17 +39,37 @@ public class LegendLayout extends View {
         gray_paint.setColor(Color.GRAY);
         blue_paint.setColor(Color.BLUE);
 
+
+
         gray_paint.setStyle(Paint.Style.FILL);
 
+//        Paint paint = new Paint();
+//
+//        canvas.drawColor(Color.GREEN);
+//
+//        Bitmap b = Bitmap.createBitmap(400, 400, Bitmap.Config.ALPHA_8);
+//        Canvas c = new Canvas(b);
+//        c.drawRect(0, 0, 400, 400, paint);
+//
+//        paint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.SRC));
+//        paint.setTextSize(40);
+//        paint.setTextScaleX(1.f);
+//        paint.setAlpha(0);
+//        paint.setAntiAlias(true);
+//        c.drawText("Your text", 30, 40, paint);
+//        paint.setColor(Color.RED);
+//
+//        canvas.drawBitmap(b, 10,10, paint);
+//https://jimbaca.com/what-is-canvas-in-android/
         Rect firstRect = new Rect();
         Rect secondRect = new Rect();
-        firstRect.set(legend.getBitmapOverlay().getWidth(), 0,getWidth(),legend.getBitmapOverlay().getHeight()/2);
-        secondRect.set(legend.getBitmapOverlay().getWidth(), legend.getBitmapOverlay().getHeight()/2, getWidth(),legend.getBitmapOverlay().getHeight());
+        firstRect.set(legend.getBitmapOverlay().getWidth()/2, 0,getWidth(),legend.getBitmapOverlay().getHeight()/2);
+        secondRect.set(legend.getBitmapOverlay().getWidth()/2, legend.getBitmapOverlay().getHeight()/2, getWidth(),legend.getBitmapOverlay().getHeight());
+        canvas.drawBitmap(legend.getBitmapOverlay() ,legend.getX(),legend.getBmp1_y(),null );
 
         canvas.drawRect(firstRect,gray_paint);
         canvas.drawRect(secondRect,blue_paint);
-        legend.setBmp1_x((int) (legend.getX() + legend.getX_dir()));
-        canvas.drawBitmap(legend.getBitmapOverlay() ,(int) (legend.getX() + legend.getX_dir()),legend.getBmp1_y(),null );
-        invalidate();
+
+
     }
 }
