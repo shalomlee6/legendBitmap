@@ -3,6 +3,7 @@ package com.slp.canvas;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.FragmentManager;
@@ -25,10 +26,12 @@ public class MainActivity extends AppCompatActivity {
 
     Boolean open;
     Button main;
+    Button popupClose;
     LegendLayout legendLayout;
     ConstraintLayout legend_layout_container;
     ConstraintLayout main_layout;
-
+    AlertDialog dialog;
+    AlertDialog.Builder dialoBuilder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
+                createPopup();
 
 
             }
@@ -72,6 +75,19 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    public void createPopup() {
+        dialoBuilder = new AlertDialog.Builder(this);
+        final View popup = getLayoutInflater().inflate(R.layout.popup, null);
+        popupClose = popup.findViewById(R.id.popup_close);
+        dialoBuilder.setView(popup);
+        dialog = dialoBuilder.create();
+        dialog.show();
+        popupClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+    }
 
 }
