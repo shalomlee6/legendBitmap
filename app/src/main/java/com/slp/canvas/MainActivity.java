@@ -37,6 +37,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setLegendAnimation();
+
+
+    }
+
+    private void setLegendAnimation() {
         open = true;
         main = findViewById(R.id.main);
 
@@ -72,7 +79,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
     }
 
     public void createPopup() {
